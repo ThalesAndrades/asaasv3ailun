@@ -1,0 +1,2613 @@
+{
+	"info": {
+		"_postman_id": "5f343b89-fed2-476e-aaed-b7c2139ed4e5",
+		"name": "API Rapidoc Telemedicina",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48344175",
+		"_collection_link": "https://thalesandradees-3978008.postman.co/workspace/Thales-Andrades's-Workspace~e06a38ab-901b-4688-8966-edca9c15c438/collection/48344175-5f343b89-fed2-476e-aaed-b7c2139ed4e5?action=share&source=collection_link&creator=48344175"
+	},
+	"item": [
+		{
+			"name": "Beneficiários",
+			"item": [
+				{
+					"name": "Adicionar beneficiários",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"name\": \"João Silva\",\n    \"cpf\": \"88228279027\",\n    \"birthday\": \"2000-01-01\",\n    \"phone\": \"11999999999\",\n    \"email\": \"teste@gmail.com\",\n    \"zipCode\": \"38065280\",\n    \"address\": \"Rua de Teste, 01\",\n    \"city\": \"Belo Horizonte\",\n    \"state\": \"MG\",\n    \"paymentType\": \"S\",\n    \"serviceType\": \"GS\",\n    \"holder\": \"29974076056\",\n    \"general\": \"General purpose\"\n  },\n  {\n    \"name\": \"Maria Silva\",\n    \"cpf\": \"53482921091\",\n    \"birthday\": \"2000-01-01\",\n    \"phone\": \"11999999999\",\n    \"email\": \"test2@test.net\",\n    \"zipCode\": \"38065280\",\n    \"address\": \"Avenida de Teste, 01\",\n    \"city\": \"Belo Horizonte\",\n    \"state\": \"MG\"\n  }\n]"
+						},
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries"
+							]
+						},
+						"description": "Inclui beneficiários na base.  \nEspera um array de 1 ou mais objetos JSON, no formato especificado.  \nDevolve, de acordo aos CPFs enviados, o uuid para cada vida, que será utilizado nas demais operações.\n\n_Os campos_ _**cpf**_ _e_ _**email**_ _devem ser únicos por beneficiário. Sua repetição impedirá a importação._\n\nOs campos **name, cpf e birthday** são obrigatórios\n\n\\-**birthday:** yyyy-MM-dd;\n\n\\-**cpf**: 00000000000;\n\n\\-**phone**: 11999999999;\n\n\\-**zipCode**: 99999999;\n\n**\\-paymentType** aceita \"**S**\" (recorrente) e \"**A**\" (consulta) - default \"S\";\n\n\\-**serviceType** aceita \"**G**\" (clínico), \"**P**\" (psicologia), \"**GP**\" (clínico + psicologia), \"**GS**\" (clínico + especialista), \"**GSP**\" (clínico + especialistas + psicologia ) - default \"G\";\n\n\\-**holder** é o CPF do titular do grupo familiar (opcional);\n\n\\-**general** é um campo para usos genéricos, útil para integrações (opcional);\n\nOs campos acima devem ser utilizados de acordo ao acordo cormecial entre sua empresa e a Rapidoc."
+					},
+					"response": [
+						{
+							"name": "{{URL}}/tema/api/beneficiaries",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n  {\n    \"name\": \"João Silva\",\n    \"cpf\": \"88228279027\",\n    \"birthday\": \"01/01/2000\",\n    \"phone\": \"11999999999\",\n    \"email\": \"teste@gmail.com\",\n    \"zipCode\": \"38065280\",\n    \"address\": \"Rua de Teste, 01\",\n    \"city\": \"Belo Horizonte\",\n    \"state\": \"MG\"\n  },\n  {\n    \"name\": \"Maria Silva\",\n    \"cpf\": \"53482921091\",\n    \"birthday\": \"01/01/1990\",\n    \"phone\": \"11999999999\",\n    \"email\": \"test2@test.net\",\n    \"zipCode\": \"38065280\",\n    \"address\": \"Avenida de Teste, 01\",\n    \"city\": \"Belo Horizonte\",\n    \"state\": \"MG\"\n  }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 23:33:19 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Processamento concluido com sucesso\",\n    \"success\": true,\n    \"beneficiaries\": [\n        {\n            \"cpf\": \"88228279027\",\n            \"uuid\": \"e9549960-3238-4a9a-b5da-9e1847bd4ebc\"\n        },\n        {\n            \"cpf\": \"53482921091\",\n            \"uuid\": \"6c7b1d58-ebaa-4bda-9e86-d28970067c43\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Solicitar atendimento",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries/:uuid/request-appointment",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries",
+								":uuid",
+								"request-appointment"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "e9549960-3238-4a9a-b5da-9e1847bd4ebc"
+								}
+							]
+						},
+						"description": "Solicita URL de consulta.  \nEla deve ser colocada em um webview, para que o beneficiário possa iniciar o atendimento."
+					},
+					"response": [
+						{
+							"name": "{{URL}}/tema/api/beneficiaries/{uuid}/request-appointment",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v1+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries/:uuid/request-appointment",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries",
+										":uuid",
+										"request-appointment"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "e9549960-3238-4a9a-b5da-9e1847bd4ebc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "981"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 23:39:02 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Processamento concluido com sucesso\",\n    \"success\": true,\n    \"url\": \"https://giovannedev.brazilsouth.cloudapp.azure.com/medicoonline/master/pacientes/aguardaPlantao.php?intToken=\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Inativar beneficiário",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries/:uuid",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "e9549960-3238-4a9a-b5da-9e1847bd4ebc"
+								}
+							]
+						},
+						"description": "Inativa um beneficiário na base"
+					},
+					"response": [
+						{
+							"name": "{{URL}}/tema/api/beneficiaries/{uuid}",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v1+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries/:uuid",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "e9549960-3238-4a9a-b5da-9e1847bd4ebc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Sep 2021 23:41:20 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Processamento concluido com sucesso\",\n    \"success\": true,\n    \"beneficiary\": {\n        \"uuid\": \"e9549960-3238-4a9a-b5da-9e1847bd4ebc\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Ler beneficiários",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries"
+							]
+						},
+						"description": "Recupera todos os beneficiários ativos na base"
+					},
+					"response": [
+						{
+							"name": "Ler beneficiários",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2747"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Jan 2023 13:11:54 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Processamento concluido com sucesso.\",\n    \"success\": true,\n    \"beneficiaries\": [\n        {\n            \"birthday\": \"20/10/1984\",\n            \"cpf\": \"34056465886\",\n            \"name\": \"René Oliveira\",\n            \"uuid\": \"02f3c571-e45d-45ab-94bc-fc88ce51275b\"\n        },\n        {\n            \"birthday\": \"01/01/2000\",\n            \"cpf\": \"33298527041\",\n            \"name\": \"João Silva\",\n            \"uuid\": \"1a4e5a88-b78b-40e1-b002-9a72b3b18396\"\n        },\n        {\n            \"birthday\": \"01/01/1990\",\n            \"cpf\": \"39502339037\",\n            \"name\": \"Maria Silva\",\n            \"uuid\": \"37ffebb5-ee4c-4dc0-ab3f-ebb1c3c462df\"\n        },\n        {\n            \"birthday\": \"01/01/2000\",\n            \"cpf\": \"67479331096\",\n            \"name\": \"João Silva\",\n            \"uuid\": \"045a7206-ff65-481c-b644-c3a1b1e166e3\"\n        },\n        {\n            \"birthday\": \"01/01/1990\",\n            \"cpf\": \"37240748081\",\n            \"name\": \"Maria Silva\",\n            \"uuid\": \"b1c6c968-0c96-4e3b-b35c-2272a404db5e\"\n        },\n        {\n            \"birthday\": \"01/01/1980\",\n            \"cpf\": \"14437592018\",\n            \"name\": \"Valdemar Aleixo Escobar\",\n            \"uuid\": \"63e06870-3a83-4c13-84d8-bed25508648a\"\n        },\n        {\n            \"birthday\": \"01/01/1990\",\n            \"cpf\": \"58282354007\",\n            \"name\": \"Victor Hugo Com Usuario\",\n            \"uuid\": \"1513f8a7-5bfd-4ee3-a6d7-9ba8f7d5d540\"\n        },\n        {\n            \"birthday\": \"\",\n            \"cpf\": \"31738523039\",\n            \"name\": \"Eduardo Lima\",\n            \"uuid\": \"ae666e2a-1318-496f-b4fe-0027c1400548\"\n        },\n        {\n            \"birthday\": \"\",\n            \"cpf\": \"34679975032\",\n            \"name\": \"Ana Paula\",\n            \"uuid\": \"1f242744-99ad-4966-b9d3-371104136643\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Ler beneficiário por CPF",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries/:cpf",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries",
+								":cpf"
+							],
+							"variable": [
+								{
+									"key": "cpf",
+									"value": "66987989087"
+								}
+							]
+						},
+						"description": "Recupera o beneficiário por seu CPF"
+					},
+					"response": [
+						{
+							"name": "Ler beneficiários",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2747"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Jan 2023 13:11:54 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Processamento concluido com sucesso.\",\n    \"success\": true,\n    \"beneficiaries\": [\n        {\n            \"birthday\": \"20/10/1984\",\n            \"cpf\": \"34056465886\",\n            \"name\": \"René Oliveira\",\n            \"uuid\": \"02f3c571-e45d-45ab-94bc-fc88ce51275b\"\n        },\n        {\n            \"birthday\": \"01/01/2000\",\n            \"cpf\": \"33298527041\",\n            \"name\": \"João Silva\",\n            \"uuid\": \"1a4e5a88-b78b-40e1-b002-9a72b3b18396\"\n        },\n        {\n            \"birthday\": \"01/01/1990\",\n            \"cpf\": \"39502339037\",\n            \"name\": \"Maria Silva\",\n            \"uuid\": \"37ffebb5-ee4c-4dc0-ab3f-ebb1c3c462df\"\n        },\n        {\n            \"birthday\": \"01/01/2000\",\n            \"cpf\": \"67479331096\",\n            \"name\": \"João Silva\",\n            \"uuid\": \"045a7206-ff65-481c-b644-c3a1b1e166e3\"\n        },\n        {\n            \"birthday\": \"01/01/1990\",\n            \"cpf\": \"37240748081\",\n            \"name\": \"Maria Silva\",\n            \"uuid\": \"b1c6c968-0c96-4e3b-b35c-2272a404db5e\"\n        },\n        {\n            \"birthday\": \"01/01/1980\",\n            \"cpf\": \"14437592018\",\n            \"name\": \"Valdemar Aleixo Escobar\",\n            \"uuid\": \"63e06870-3a83-4c13-84d8-bed25508648a\"\n        },\n        {\n            \"birthday\": \"01/01/1990\",\n            \"cpf\": \"58282354007\",\n            \"name\": \"Victor Hugo Com Usuario\",\n            \"uuid\": \"1513f8a7-5bfd-4ee3-a6d7-9ba8f7d5d540\"\n        },\n        {\n            \"birthday\": \"\",\n            \"cpf\": \"31738523039\",\n            \"name\": \"Eduardo Lima\",\n            \"uuid\": \"ae666e2a-1318-496f-b4fe-0027c1400548\"\n        },\n        {\n            \"birthday\": \"\",\n            \"cpf\": \"34679975032\",\n            \"name\": \"Ana Paula\",\n            \"uuid\": \"1f242744-99ad-4966-b9d3-371104136643\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Ler beneficiário por CPF",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries/:cpf",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries",
+										":cpf"
+									],
+									"variable": [
+										{
+											"key": "cpf",
+											"value": "66987989087"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 09 Jan 2023 18:16:51 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Processamento concluido com sucesso.\",\n    \"success\": true,\n    \"beneficiary\": {\n        \"birthday\": \"01/01/2000\",\n        \"cpf\": \"66987989087\",\n        \"name\": \"Thiago Silva\",\n        \"uuid\": \"11ffe9c0-ccf8-4f3e-9140-391ad5f94d94\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Ler encaminhamentos do beneficiário",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries/:uuid/medical-referrals",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries",
+								":uuid",
+								"medical-referrals"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "e591073a-2cd0-41c2-ae42-e597c0e1689c"
+								}
+							]
+						},
+						"description": "Recupera o beneficiário por seu CPF"
+					},
+					"response": [
+						{
+							"name": "Ler encaminhamentos do beneficiário",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries/:uuid/medical-referrals",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries",
+										":uuid",
+										"medical-referrals"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "e591073a-2cd0-41c2-ae42-e597c0e1689c"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Apr 2024 23:11:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "count",
+									"value": "1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "591"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"uuid\": \"c3803869-5a5a-4881-9250-5eefef09a71d\",\n        \"beneficiary\": {\n            \"name\": \"João Silva\",\n            \"uuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n            \"cpf\": \"15633379080\",\n            \"email\": \"joaosilva2024@gmail.com\",\n            \"birth\": \"01/01/2000\",\n            \"phone\": \"11999999999\",\n            \"isActive\": true,\n            \"client\": {\n                \"name\": \"Rapidoc Test\",\n                \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n            }\n        },\n        \"createdAt\": \"20/03/2024 06:16:34\",\n        \"updatedAt\": \"20/03/2024 06:16:39\",\n        \"status\": \"PENDING\",\n        \"urlPath\": \"https://www.almg.gov.br/export/sites/default/acompanhe/eventos/hotsites/2016/encontro_internacional_saude/documentos/textos_referencia/00_palavra_dos_organizadores.pdf\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ler consultas do beneficiário",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries/:uuid/appointments",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries",
+								":uuid",
+								"appointments"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "e591073a-2cd0-41c2-ae42-e597c0e1689c"
+								}
+							]
+						},
+						"description": "Recupera o beneficiário por seu CPF"
+					},
+					"response": [
+						{
+							"name": "Ler consultas do beneficiário",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries/:uuid/appointments",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries",
+										":uuid",
+										"appointments"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "e591073a-2cd0-41c2-ae42-e597c0e1689c"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 11 Apr 2024 17:04:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "count",
+									"value": "1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "761"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"uuid\": \"f8356d31-82e8-428d-a3e6-cc3592b96fab\",\n        \"beneficiary\": {\n            \"name\": \"João Silva\",\n            \"uuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n            \"cpf\": \"15633379080\",\n            \"email\": \"joaosilva2024@gmail.com\",\n            \"birth\": \"01/01/2000\",\n            \"phone\": \"11999999999\",\n            \"isActive\": true,\n            \"client\": {\n                \"name\": \"Rapidoc Test\",\n                \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n            }\n        },\n        \"specialty\": {\n            \"name\": \"Endocrinologia\",\n            \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n        },\n        \"status\": \"SCHEDULED\",\n        \"professional\": {\n            \"name\": \"Thais Livon Sampaio\",\n            \"specialties\": [\n                {\n                    \"name\": \"Endocrinologia\",\n                    \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n                }\n            ]\n        },\n        \"detail\": {\n            \"uuid\": \"bdd839e7-d81f-4a3b-aca6-6492ed3b6003\",\n            \"date\": \"15/05/2024\",\n            \"from\": \"14:20\",\n            \"to\": \"14:40\"\n        },\n        \"beneficiaryUrl\": \"https://telemedicina.rapidoc.tech.atendimento.hom.dav.med.br/a/h66dju6xby\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Reativar beneficiário",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries/:uuid/reactivate",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries",
+								":uuid",
+								"reactivate"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "4d157aa8-59ea-4698-b76f-f5547f185cf8"
+								}
+							]
+						},
+						"description": "Reativa um beneficiário que está inativo"
+					},
+					"response": [
+						{
+							"name": "Reativar beneficiário",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries/:uuid/reactivate",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries",
+										":uuid",
+										"reactivate"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "4d157aa8-59ea-4698-b76f-f5547f185cf8"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "127"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 06 Jan 2023 13:15:29 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Processamento concluido com sucesso.\",\n    \"success\": true,\n    \"beneficiary\": {\n        \"uuid\": \"4d157aa8-59ea-4698-b76f-f5547f185cf8\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualizar beneficiário",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"name\": \"João Silva\",\n    \"birthday\": \"2000-01-01\",\n    \"phone\": \"11999999999\",\n    \"email\": \"joaosilva2024@gmail.com\",\n    \"zipCode\": \"38065280\",\n    \"address\": \"Rua de Teste, 01\",\n    \"city\": \"Belo Horizonte\",\n    \"state\": \"MG\",\n    \"paymentType\": \"S\",\n    \"serviceType\": \"GS\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiaries/:uuid",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiaries",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "e591073a-2cd0-41c2-ae42-e597c0e1689c"
+								}
+							]
+						},
+						"description": "Atualiza os dados de um beneficiário"
+					},
+					"response": [
+						{
+							"name": "Atualizar beneficiário",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\n    \"name\": \"João Silva\",\n    \"birthday\": \"2000-01-01\",\n    \"phone\": \"11999999999\",\n    \"email\": \"joaosilva2024@gmail.com\",\n    \"zipCode\": \"38065280\",\n    \"address\": \"Rua de Teste, 01\",\n    \"city\": \"Belo Horizonte\",\n    \"state\": \"MG\",\n    \"paymentType\": \"S\",\n    \"serviceType\": \"GS\"\n  }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiaries/:uuid",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiaries",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "e591073a-2cd0-41c2-ae42-e597c0e1689c"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 05 Apr 2024 21:35:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Processamento concluido com sucesso.\",\n    \"beneficiary\": {\n        \"name\": \"João Silva\",\n        \"uuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n        \"cpf\": \"15633379080\",\n        \"birthday\": \"2000-01-01\",\n        \"phone\": \"11999999999\",\n        \"email\": \"joaosilva2024@gmail.com\",\n        \"zipCode\": \"38065280\",\n        \"address\": \"Rua de Teste, 01\",\n        \"city\": \"Belo Horizonte\",\n        \"state\": \"MG\",\n        \"paymentType\": \"S\",\n        \"serviceType\": \"GS\",\n        \"holder\": \"29974076056\",\n        \"isActive\": true,\n        \"createdAt\": \"2023-10-07 16:38:52\",\n        \"updatedAt\": \"2024-04-05 21:35:26\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Encaminhamentos",
+			"item": [
+				{
+					"name": "Ler encaminhamentos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/beneficiary-medical-referrals",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"beneficiary-medical-referrals"
+							]
+						},
+						"description": "Recupera todos os encaminhamentos da base\n\nPara que você tenha encaminhamentos disponíveis no ambiente de testes, entre em contato com o nosso suporte, solicitando a geração desses documentos."
+					},
+					"response": [
+						{
+							"name": "Ler encaminhamentos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/beneficiary-medical-referrals",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"beneficiary-medical-referrals"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 09 Apr 2024 23:04:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "count",
+									"value": "1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "591"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"uuid\": \"c3803869-5a5a-4881-9250-5eefef09a71d\",\n        \"beneficiary\": {\n            \"name\": \"João Silva\",\n            \"uuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n            \"cpf\": \"15633379080\",\n            \"email\": \"joaosilva2024@gmail.com\",\n            \"birth\": \"01/01/2000\",\n            \"phone\": \"11999999999\",\n            \"isActive\": true,\n            \"client\": {\n                \"name\": \"Rapidoc Test\",\n                \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n            }\n        },\n        \"createdAt\": \"20/03/2024 06:16:34\",\n        \"updatedAt\": \"20/03/2024 06:16:39\",\n        \"status\": \"PENDING\",\n        \"urlPath\": \"https://www.almg.gov.br/export/sites/default/acompanhe/eventos/hotsites/2016/encontro_internacional_saude/documentos/textos_referencia/00_palavra_dos_organizadores.pdf\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Agendamento",
+			"item": [
+				{
+					"name": "Ler especialidades",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/specialties",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"specialties"
+							]
+						},
+						"description": "Recupera todas as especialidades disponíveis"
+					},
+					"response": [
+						{
+							"name": "Ler especialidades",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/specialties",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"specialties"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 01:44:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "count",
+									"value": "9"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "632"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"name\": \"Pediatria\",\n        \"uuid\": \"8f1f44f1-3758-49d1-bcb5-1840dec9aba0\"\n    },\n    {\n        \"name\": \"Dermatologia\",\n        \"uuid\": \"c9fcdaa2-791b-4394-9fc8-70e594763c60\"\n    },\n    {\n        \"name\": \"Neurologia\",\n        \"uuid\": \"ece89dad-e6f9-437b-b827-96a9b6b2dbe2\"\n    },\n    {\n        \"name\": \"Ortopedia\",\n        \"uuid\": \"8a3c146e-975e-427e-81e9-88ed448e811c\"\n    },\n    {\n        \"name\": \"Endocrinologia\",\n        \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n    },\n    {\n        \"name\": \"Ginecologia e Obstetrícia\",\n        \"uuid\": \"53b84e64-7691-4fa2-8bc9-0f0678ef2957\"\n    },\n    {\n        \"name\": \"Psiquiatria\",\n        \"uuid\": \"18cb756e-5b9a-46dd-8498-c5f70e138a51\"\n    },\n    {\n        \"name\": \"Urologia\",\n        \"uuid\": \"c9789d0b-5f22-46fd-93a5-81dad1d00462\"\n    },\n    {\n        \"name\": \"Nutrição\",\n        \"uuid\": \"a5c3c51d-d999-4f64-97b4-e776093f136a\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ler disponibilidade por especialidades",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/specialty-availability?specialtyUuid=cb59a51f-a19f-40f4-bccb-f906fe35e710&dateInitial=14/05/2024&dateFinal=19/05/2024&beneficiaryUuid=e591073a-2cd0-41c2-ae42-e597c0e1689c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"specialty-availability"
+							],
+							"query": [
+								{
+									"key": "specialtyUuid",
+									"value": "cb59a51f-a19f-40f4-bccb-f906fe35e710"
+								},
+								{
+									"key": "dateInitial",
+									"value": "14/05/2024"
+								},
+								{
+									"key": "dateFinal",
+									"value": "19/05/2024"
+								},
+								{
+									"key": "beneficiaryUuid",
+									"value": "e591073a-2cd0-41c2-ae42-e597c0e1689c"
+								}
+							]
+						},
+						"description": "Lista todos os horários disponíveis em dado período, para determinada especialidade"
+					},
+					"response": [
+						{
+							"name": "Ler disponibilidade por especialidades",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/specialty-availability?specialtyUuid=cb59a51f-a19f-40f4-bccb-f906fe35e710&dateInitial=14/05/2024&dateFinal=19/05/2024&beneficiaryUuid=e591073a-2cd0-41c2-ae42-e597c0e1689c",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"specialty-availability"
+									],
+									"query": [
+										{
+											"key": "specialtyUuid",
+											"value": "cb59a51f-a19f-40f4-bccb-f906fe35e710"
+										},
+										{
+											"key": "dateInitial",
+											"value": "14/05/2024"
+										},
+										{
+											"key": "dateFinal",
+											"value": "19/05/2024"
+										},
+										{
+											"key": "beneficiaryUuid",
+											"value": "e591073a-2cd0-41c2-ae42-e597c0e1689c"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 01:46:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "count",
+									"value": "32"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3073"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"uuid\": \"61d990c0-e8e0-45a3-a8f6-2ebde71ba72b\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"09:00\",\n        \"to\": \"09:20\"\n    },\n    {\n        \"uuid\": \"f6a1ca4e-a3e3-43c8-9c9f-8f9f86c852fd\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"09:20\",\n        \"to\": \"09:40\"\n    },\n    {\n        \"uuid\": \"a0bb920e-c80c-4438-9c8f-6723c3f01a8b\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"09:40\",\n        \"to\": \"10:00\"\n    },\n    {\n        \"uuid\": \"2c76fa5e-fbf2-4cc2-b560-82f95f1398ee\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"10:00\",\n        \"to\": \"10:20\"\n    },\n    {\n        \"uuid\": \"9d88c203-a7fe-4f47-be84-00047812e789\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"10:20\",\n        \"to\": \"10:40\"\n    },\n    {\n        \"uuid\": \"e3b7c1e2-ecd8-4abb-92dc-8cec121422de\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"10:40\",\n        \"to\": \"11:00\"\n    },\n    {\n        \"uuid\": \"a4e41910-819d-41bb-88a3-b37c571b2753\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"11:00\",\n        \"to\": \"11:20\"\n    },\n    {\n        \"uuid\": \"522c215d-74d2-46a1-a9cf-72baa8057cd4\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"11:20\",\n        \"to\": \"11:40\"\n    },\n    {\n        \"uuid\": \"74a439db-9f12-46de-9578-ce5ac40877af\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"11:40\",\n        \"to\": \"12:00\"\n    },\n    {\n        \"uuid\": \"8f054d0a-a063-4dac-8b27-61cca60e8c29\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"14:00\",\n        \"to\": \"14:20\"\n    },\n    {\n        \"uuid\": \"bdd839e7-d81f-4a3b-aca6-6492ed3b6003\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"14:20\",\n        \"to\": \"14:40\"\n    },\n    {\n        \"uuid\": \"5eb61cce-4f46-47a3-8cce-8400be0655de\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"14:40\",\n        \"to\": \"15:00\"\n    },\n    {\n        \"uuid\": \"a580237a-0d12-46fd-9534-094da7cc7ffb\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"15:00\",\n        \"to\": \"15:20\"\n    },\n    {\n        \"uuid\": \"641fe456-b261-400b-a83b-b28778a8514a\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"15:20\",\n        \"to\": \"15:40\"\n    },\n    {\n        \"uuid\": \"58cf56e2-537b-485e-8f85-762c17886f39\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"15:40\",\n        \"to\": \"16:00\"\n    },\n    {\n        \"uuid\": \"ec70ebbb-8560-4af1-aa64-c9e139135bd6\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"16:00\",\n        \"to\": \"16:20\"\n    },\n    {\n        \"uuid\": \"f26c9bba-4804-4152-9642-cdc153f65c35\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"16:20\",\n        \"to\": \"16:40\"\n    },\n    {\n        \"uuid\": \"184eba7d-55c2-4c19-861a-df9cb4369501\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"16:40\",\n        \"to\": \"17:00\"\n    },\n    {\n        \"uuid\": \"9c032c8e-e3f7-4bf5-9f9d-f26e0a70d3ed\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"17:00\",\n        \"to\": \"17:20\"\n    },\n    {\n        \"uuid\": \"9b10f820-545d-4148-87bc-5bc9ee0a5681\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"17:20\",\n        \"to\": \"17:40\"\n    },\n    {\n        \"uuid\": \"a84f14d3-847d-4ad7-8e59-7f01bbdb668a\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"17:40\",\n        \"to\": \"18:00\"\n    },\n    {\n        \"uuid\": \"e97a3b0b-f80e-416e-9d63-5301341d4e96\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"20:00\",\n        \"to\": \"20:20\"\n    },\n    {\n        \"uuid\": \"a0fb75f2-5597-416d-a380-1da8ca5b7e13\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"20:20\",\n        \"to\": \"20:40\"\n    },\n    {\n        \"uuid\": \"6f723a6d-e363-4d5c-a2f0-36fe6f6c5a36\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"20:40\",\n        \"to\": \"21:00\"\n    },\n    {\n        \"uuid\": \"ab78c2e6-b97d-4686-8150-87eb8d3420de\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"21:00\",\n        \"to\": \"21:20\"\n    },\n    {\n        \"uuid\": \"307d3fb8-d333-472e-bf22-0f0ac43cd9bd\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"21:20\",\n        \"to\": \"21:40\"\n    },\n    {\n        \"uuid\": \"5ce15a2d-d752-473f-afb3-36c5f306790c\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"21:40\",\n        \"to\": \"22:00\"\n    },\n    {\n        \"uuid\": \"65a7a213-0852-4854-9807-57f5dd070084\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"22:00\",\n        \"to\": \"22:20\"\n    },\n    {\n        \"uuid\": \"e47dac1c-9628-44fc-96e1-b9461524b13d\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"22:20\",\n        \"to\": \"22:40\"\n    },\n    {\n        \"uuid\": \"4635d89a-d74b-4161-983b-76618d14e7ee\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"22:40\",\n        \"to\": \"23:00\"\n    },\n    {\n        \"uuid\": \"8d9f7857-4ee7-4ffc-821f-7884c9e36f02\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"23:00\",\n        \"to\": \"23:20\"\n    },\n    {\n        \"uuid\": \"3d187830-16b9-43c0-87cd-5d466725b058\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"23:20\",\n        \"to\": \"23:40\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Realiza agendamento sem encaminhamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"beneficiaryUuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n    \"availabilityUuid\": \"9d88c203-a7fe-4f47-be84-00047812e789\",\n    \"specialtyUuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\",\n    \"approveAdditionalPayment\": true\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/tema/api/appointments",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"appointments"
+							]
+						},
+						"description": "Realiza um agendamento sem encaminhamento.\n\nO parâmatro approveAdditionalPayment serve para dar ciência que um agendamento assim poderá gerar cobrança adicional."
+					},
+					"response": [
+						{
+							"name": "Realiza agendamento sem encaminhamento",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"beneficiaryUuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n    \"availabilityUuid\": \"9d88c203-a7fe-4f47-be84-00047812e789\",\n    \"specialtyUuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\",\n    \"approveAdditionalPayment\": true\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/tema/api/appointments",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"appointments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Location",
+									"value": "https://sandbox.rapidoc.tech/tema/api/appointments/96c6cc52-9967-4dbd-b2c9-79a8e7a23461"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 21:29:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "625"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uuid\": \"96c6cc52-9967-4dbd-b2c9-79a8e7a23461\",\n    \"beneficiary\": {\n        \"name\": \"João Silva\",\n        \"uuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n        \"cpf\": \"15633379080\",\n        \"email\": \"joaosilva2024@gmail.com\",\n        \"birth\": \"01/01/2000\",\n        \"phone\": \"11999999999\",\n        \"isActive\": true,\n        \"client\": {\n            \"name\": \"Rapidoc Test\",\n            \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n        }\n    },\n    \"specialty\": {\n        \"name\": \"Endocrinologia\",\n        \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n    },\n    \"status\": \"SCHEDULED\",\n    \"detail\": {\n        \"uuid\": \"9d88c203-a7fe-4f47-be84-00047812e789\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"10:20\",\n        \"to\": \"10:40\"\n    },\n    \"beneficiaryUrl\": \"https://telemedicina.rapidoc.tech.atendimento.hom.dav.med.br/a/3dygitr9dj\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Realiza agendamento com encaminhamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"beneficiaryUuid\": \"4526371f-f09d-4483-ba07-07a441823f12\",\n    \"availabilityUuid\": \"f26c9bba-4804-4152-9642-cdc153f65c35\",\n    \"specialtyUuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\",\n    \"beneficiaryMedicalReferralUuid\": \"0fcbe703-07e0-443d-a486-382c12d04d9d\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/tema/api/appointments",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"appointments"
+							]
+						},
+						"description": "Realiza um agendamento com encaminhamento"
+					},
+					"response": [
+						{
+							"name": "Realiza agendamento com encaminhamento",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"beneficiaryUuid\": \"4526371f-f09d-4483-ba07-07a441823f12\",\n    \"availabilityUuid\": \"f26c9bba-4804-4152-9642-cdc153f65c35\",\n    \"specialtyUuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\",\n    \"beneficiaryMedicalReferralUuid\": \"0fcbe703-07e0-443d-a486-382c12d04d9d\"\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/tema/api/appointments",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"appointments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Location",
+									"value": "https://sandbox.rapidoc.tech/tema/api/appointments/caf22e1a-c7d1-45e8-809f-491491631cfb"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 21:33:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1252"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uuid\": \"caf22e1a-c7d1-45e8-809f-491491631cfb\",\n    \"beneficiary\": {\n        \"name\": \"Vicentina Martins de Oliveira\",\n        \"uuid\": \"4526371f-f09d-4483-ba07-07a441823f12\",\n        \"cpf\": \"07425975041\",\n        \"email\": \"1697374669449rapidoc@gmail.com\",\n        \"birth\": \"27/01/2000\",\n        \"isActive\": true,\n        \"client\": {\n            \"name\": \"Rapidoc Test\",\n            \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n        }\n    },\n    \"specialty\": {\n        \"name\": \"Endocrinologia\",\n        \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n    },\n    \"beneficiaryMedicalReferral\": {\n        \"uuid\": \"0fcbe703-07e0-443d-a486-382c12d04d9d\",\n        \"beneficiary\": {\n            \"name\": \"Vicentina Martins de Oliveira\",\n            \"uuid\": \"4526371f-f09d-4483-ba07-07a441823f12\",\n            \"cpf\": \"07425975041\",\n            \"email\": \"1697374669449rapidoc@gmail.com\",\n            \"birth\": \"27/01/2000\",\n            \"isActive\": true,\n            \"client\": {\n                \"name\": \"Rapidoc Test\",\n                \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n            }\n        },\n        \"createdAt\": \"10/04/2024 06:30:00\",\n        \"updatedAt\": \"10/04/2024 09:33:21\",\n        \"status\": \"SCHEDULED\",\n        \"urlPath\": \"https://www.almg.gov.br/export/sites/default/acompanhe/eventos/hotsites/2016/encontro_internacional_saude/documentos/textos_referencia/00_palavra_dos_organizadores.pdf\"\n    },\n    \"status\": \"SCHEDULED\",\n    \"detail\": {\n        \"uuid\": \"f26c9bba-4804-4152-9642-cdc153f65c35\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"16:20\",\n        \"to\": \"16:40\"\n    },\n    \"beneficiaryUrl\": \"https://telemedicina.rapidoc.tech.atendimento.hom.dav.med.br/a/br2rccup4k\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Ler agendamentos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/appointments",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"appointments"
+							]
+						},
+						"description": "Recupera todos os agendamentos"
+					},
+					"response": [
+						{
+							"name": "Ler agendamentos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/appointments",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"appointments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 21:34:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "count",
+									"value": "2"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2148"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"uuid\": \"96c6cc52-9967-4dbd-b2c9-79a8e7a23461\",\n        \"beneficiary\": {\n            \"name\": \"João Silva\",\n            \"uuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n            \"cpf\": \"15633379080\",\n            \"email\": \"joaosilva2024@gmail.com\",\n            \"birth\": \"01/01/2000\",\n            \"phone\": \"11999999999\",\n            \"isActive\": true,\n            \"client\": {\n                \"name\": \"Rapidoc Test\",\n                \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n            }\n        },\n        \"specialty\": {\n            \"name\": \"Endocrinologia\",\n            \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n        },\n        \"status\": \"SCHEDULED\",\n        \"professional\": {\n            \"name\": \"Thais Livon Sampaio\",\n            \"specialties\": [\n                {\n                    \"name\": \"Endocrinologia\",\n                    \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n                }\n            ]\n        },\n        \"detail\": {\n            \"uuid\": \"9d88c203-a7fe-4f47-be84-00047812e789\",\n            \"date\": \"15/05/2024\",\n            \"from\": \"10:20\",\n            \"to\": \"10:40\"\n        },\n        \"beneficiaryUrl\": \"https://telemedicina.rapidoc.tech.atendimento.hom.dav.med.br/a/3dygitr9dj\"\n    },\n    {\n        \"uuid\": \"caf22e1a-c7d1-45e8-809f-491491631cfb\",\n        \"beneficiary\": {\n            \"name\": \"Vicentina Martins de Oliveira\",\n            \"uuid\": \"4526371f-f09d-4483-ba07-07a441823f12\",\n            \"cpf\": \"07425975041\",\n            \"email\": \"1697374669449rapidoc@gmail.com\",\n            \"birth\": \"27/01/2000\",\n            \"isActive\": true,\n            \"client\": {\n                \"name\": \"Rapidoc Test\",\n                \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n            }\n        },\n        \"specialty\": {\n            \"name\": \"Endocrinologia\",\n            \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n        },\n        \"beneficiaryMedicalReferral\": {\n            \"uuid\": \"0fcbe703-07e0-443d-a486-382c12d04d9d\",\n            \"beneficiary\": {\n                \"name\": \"Vicentina Martins de Oliveira\",\n                \"uuid\": \"4526371f-f09d-4483-ba07-07a441823f12\",\n                \"cpf\": \"07425975041\",\n                \"email\": \"1697374669449rapidoc@gmail.com\",\n                \"birth\": \"27/01/2000\",\n                \"isActive\": true,\n                \"client\": {\n                    \"name\": \"Rapidoc Test\",\n                    \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n                }\n            },\n            \"createdAt\": \"10/04/2024 06:30:00\",\n            \"updatedAt\": \"10/04/2024 09:33:21\",\n            \"status\": \"SCHEDULED\",\n            \"urlPath\": \"https://www.almg.gov.br/export/sites/default/acompanhe/eventos/hotsites/2016/encontro_internacional_saude/documentos/textos_referencia/00_palavra_dos_organizadores.pdf\"\n        },\n        \"status\": \"SCHEDULED\",\n        \"professional\": {\n            \"name\": \"Thais Livon Sampaio\",\n            \"specialties\": [\n                {\n                    \"name\": \"Endocrinologia\",\n                    \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n                }\n            ]\n        },\n        \"detail\": {\n            \"uuid\": \"f26c9bba-4804-4152-9642-cdc153f65c35\",\n            \"date\": \"15/05/2024\",\n            \"from\": \"16:20\",\n            \"to\": \"16:40\"\n        },\n        \"beneficiaryUrl\": \"https://telemedicina.rapidoc.tech.atendimento.hom.dav.med.br/a/br2rccup4k\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Ler agendamento por uuid",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/appointments/:uuid",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"appointments",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "96c6cc52-9967-4dbd-b2c9-79a8e7a23461"
+								}
+							]
+						},
+						"description": "Recupera os agendamentos por uuid"
+					},
+					"response": [
+						{
+							"name": "Ler agendamento por uuid",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/appointments/:uuid",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"appointments",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "96c6cc52-9967-4dbd-b2c9-79a8e7a23461"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 21:36:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "759"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uuid\": \"96c6cc52-9967-4dbd-b2c9-79a8e7a23461\",\n    \"beneficiary\": {\n        \"name\": \"João Silva\",\n        \"uuid\": \"e591073a-2cd0-41c2-ae42-e597c0e1689c\",\n        \"cpf\": \"15633379080\",\n        \"email\": \"joaosilva2024@gmail.com\",\n        \"birth\": \"01/01/2000\",\n        \"phone\": \"11999999999\",\n        \"isActive\": true,\n        \"client\": {\n            \"name\": \"Rapidoc Test\",\n            \"uuid\": \"5073b947-92d4-48c5-9f4f-4ef603890df4\"\n        }\n    },\n    \"specialty\": {\n        \"name\": \"Endocrinologia\",\n        \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n    },\n    \"status\": \"SCHEDULED\",\n    \"professional\": {\n        \"name\": \"Thais Livon Sampaio\",\n        \"specialties\": [\n            {\n                \"name\": \"Endocrinologia\",\n                \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n            }\n        ]\n    },\n    \"detail\": {\n        \"uuid\": \"9d88c203-a7fe-4f47-be84-00047812e789\",\n        \"date\": \"15/05/2024\",\n        \"from\": \"10:20\",\n        \"to\": \"10:40\"\n    },\n    \"beneficiaryUrl\": \"https://telemedicina.rapidoc.tech.atendimento.hom.dav.med.br/a/3dygitr9dj\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancelar agendamento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/appointments/:uuid",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"appointments",
+								":uuid"
+							],
+							"variable": [
+								{
+									"key": "uuid",
+									"value": "96c6cc52-9967-4dbd-b2c9-79a8e7a23461"
+								}
+							]
+						},
+						"description": "Cancela um agendamento"
+					},
+					"response": [
+						{
+							"name": "Cancelar agendamento",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/appointments/:uuid",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"appointments",
+										":uuid"
+									],
+									"variable": [
+										{
+											"key": "uuid",
+											"value": "96c6cc52-9967-4dbd-b2c9-79a8e7a23461"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store,must-revalidate"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 21:37:52 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "access_token",
+								"value": "$aact_prod_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OmQ2MjNjMzZlLWNmYjUtNGE2OS1hNTdlLTA5M2EzNzljY2JjMzo6JGFhY2hfNmUxMTIxYjEtNWY0MC00OGY4LTljMjktYmQyOTE4N2JhOTRi"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"billingType\": \"PIX\",\n  \"customer\": \"joao\",\n  \"value\": 89.9,\n\n  \"description\": \"Agendamento com nutricionista\",\n  \"externalReference\": \"nutritionist-appointment\",\n  \"paymentDate\": null\n}"
+						},
+						"url": {
+							"raw": "https://www.asaas.com/api/v3/payments",
+							"protocol": "https",
+							"host": [
+								"www",
+								"asaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Planos",
+			"item": [
+				{
+					"name": "Ler planos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "{{CLIENT_ID}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.rapidoc.tema-v2+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tema/api/plans",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tema",
+								"api",
+								"plans"
+							]
+						},
+						"description": "Recupera todas as especialidades disponíveis"
+					},
+					"response": [
+						{
+							"name": "Ler planos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{CLIENT_ID}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.rapidoc.tema-v2+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/tema/api/plans",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"tema",
+										"api",
+										"plans"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 30 Aug 2025 20:14:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1242"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "clientId, origin, Content-Type, accept, Authorization, beneficiary, groupId"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "count"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "count",
+									"value": "3"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, PUT, DELETE, OPTIONS, HEAD"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"uuid\": \"22bea4dd-ee7f-4c8b-8cd2-747e1752f72d\",\n        \"name\": \"Básico\",\n        \"description\": \"Plano Básico (Generalista 24/7)\",\n        \"isActive\": true,\n        \"serviceType\": \"GENERALIST\",\n        \"specialties\": []\n    },\n    {\n        \"uuid\": \"6676fb40-4b2f-4434-bd9c-ba6f38925c44\",\n        \"name\": \"Premium\",\n        \"description\": \"Plano Premium (Generalista 24/7 + Especialidades)\",\n        \"isActive\": true,\n        \"serviceType\": \"GENERALIST_AND_SPECIALIST\",\n        \"specialties\": [\n            {\n                \"name\": \"Urologia\",\n                \"uuid\": \"c9789d0b-5f22-46fd-93a5-81dad1d00462\"\n            },\n            {\n                \"name\": \"Ginecologia e Obstetrícia\",\n                \"uuid\": \"53b84e64-7691-4fa2-8bc9-0f0678ef2957\"\n            },\n            {\n                \"name\": \"Pediatria\",\n                \"uuid\": \"8f1f44f1-3758-49d1-bcb5-1840dec9aba0\"\n            },\n            {\n                \"name\": \"Ortopedia\",\n                \"uuid\": \"8a3c146e-975e-427e-81e9-88ed448e811c\"\n            },\n            {\n                \"name\": \"Neurologia\",\n                \"uuid\": \"ece89dad-e6f9-437b-b827-96a9b6b2dbe2\"\n            },\n            {\n                \"name\": \"Nutrição\",\n                \"uuid\": \"a5c3c51d-d999-4f64-97b4-e776093f136a\"\n            },\n            {\n                \"name\": \"Dermatologia\",\n                \"uuid\": \"c9fcdaa2-791b-4394-9fc8-70e594763c60\"\n            },\n            {\n                \"name\": \"Endocrinologia\",\n                \"uuid\": \"cb59a51f-a19f-40f4-bccb-f906fe35e710\"\n            },\n            {\n                \"name\": \"Psiquiatria\",\n                \"uuid\": \"18cb756e-5b9a-46dd-8498-c5f70e138a51\"\n            }\n        ]\n    },\n    {\n        \"uuid\": \"07f2e6a3-3c4a-40a0-9473-f05b91f9b159\",\n        \"name\": \"Psicologia\",\n        \"description\": \"Plano de Psicologia\",\n        \"isActive\": true,\n        \"serviceType\": \"PSYCHOLOGY\",\n        \"specialties\": [\n            {\n                \"name\": \"Psicologia\",\n                \"uuid\": \"d4717822-975d-4812-8082-2f310d5be5d3\"\n            }\n        ]\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "AsaasAilun",
+			"item": [
+				{
+					"name": "Create Payment - Médico Especialista",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "access_token",
+								"value": "$aact_prod_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OmQ2MjNjMzZlLWNmYjUtNGE2OS1hNTdlLTA5M2EzNzljY2JjMzo6JGFhY2hfNmUxMTIxYjEtNWY0MC00OGY4LTljMjktYmQyOTE4N2JhOTRi"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": \"{{customer_id}}\",\n  \"billingType\": \"CREDIT_CARD\",\n  \"dueDate\": \"2025-12-31\",\n  \"value\": 139.90,\n  \"description\": \"Agendamento com médico especialista\",\n  \"externalReference\": \"specialist-doctor-appointment\",\n  \"paymentDate\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://www.asaas.com/api/v3/payments",
+							"protocol": "https",
+							"host": [
+								"www",
+								"asaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Payment - Psicólogo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "access_token",
+								"value": "$aact_prod_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OmQ2MjNjMzZlLWNmYjUtNGE2OS1hNTdlLTA5M2EzNzljY2JjMzo6JGFhY2hfNmUxMTIxYjEtNWY0MC00OGY4LTljMjktYmQyOTE4N2JhOTRi"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": \"{{customer_id}}\",\n  \"billingType\": \"BOLETO\",\n  \"dueDate\": \"2025-12-31\",\n  \"value\": 89.90,\n  \"description\": \"Agendamento com psicólogo\",\n  \"externalReference\": \"psychologist-appointment\",\n  \"paymentDate\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://www.asaas.com/api/v3/payments",
+							"protocol": "https",
+							"host": [
+								"www",
+								"asaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Payment - Atendimento Médico Imediato",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "access_token",
+								"value": "$aact_prod_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OmQ2MjNjMzZlLWNmYjUtNGE2OS1hNTdlLTA5M2EzNzljY2JjMzo6JGFhY2hfNmUxMTIxYjEtNWY0MC00OGY4LTljMjktYmQyOTE4N2JhOTRi"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": \"{{customer_id}}\",\n  \"billingType\": \"PIX\",\n  \"dueDate\": \"2025-12-31\",\n  \"value\": 49.90,\n  \"description\": \"Atendimento médico imediato\",\n  \"externalReference\": \"immediate-medical-service\",\n  \"paymentDate\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://www.asaas.com/api/v3/payments",
+							"protocol": "https",
+							"host": [
+								"www",
+								"asaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Payment - Nutricionista",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "access_token",
+								"value": "$aact_prod_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OmQ2MjNjMzZlLWNmYjUtNGE2OS1hNTdlLTA5M2EzNzljY2JjMzo6JGFhY2hfNmUxMTIxYjEtNWY0MC00OGY4LTljMjktYmQyOTE4N2JhOTRi"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": \"{{customer_id}}\",\n  \"billingType\": \"CREDIT_CARD\",\n  \"dueDate\": \"2025-12-31\",\n  \"value\": 89.90,\n  \"description\": \"Agendamento com nutricionista\",\n  \"externalReference\": \"nutritionist-appointment\",\n  \"paymentDate\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://www.asaas.com/api/v3/payments",
+							"protocol": "https",
+							"host": [
+								"www",
+								"asaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment Status",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "access_token",
+								"value": "$aact_prod_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OmQ2MjNjMzZlLWNmYjUtNGE2OS1hNTdlLTA5M2EzNzljY2JjMzo6JGFhY2hfNmUxMTIxYjEtNWY0MC00OGY4LTljMjktYmQyOTE4N2JhOTRi"
+							}
+						],
+						"url": {
+							"raw": "https://www.asaas.com/api/v3/payments/{{payment_id}}",
+							"protocol": "https",
+							"host": [
+								"www",
+								"asaas",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"payments",
+								"{{payment_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "$aact_prod_000MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OmQ2MjNjMzZlLWNmYjUtNGE2OS1hNTdlLTA5M2EzNzljY2JjMzo6JGFhY2hfNmUxMTIxYjEtNWY0MC00OGY4LTljMjktYmQyOTE4N2JhOTRi",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "asaas_token",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
